@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>玩转色彩 · 36个神奇的颜色实验</title>
+<meta name="description" content="色彩观察学院儿童色彩实验室。每天5分钟，36个颜色实验。扫码即可学习，无需注册。" />
+<style>
+  :root {
+    --ink: #2a221c;
+    --muted: #6b5e52;
+    --paper: #fff8ef;
+    --card: #fffdf9;
+    --line: #eadfce;
+    --red: #e24b3b;
+    --orange: #f08a2a;
+    --yellow: #f2c14e;
+    --green: #3c9a6a;
+    --blue: #3d7edb;
+    --purple: #7b5ea7;
+    --shadow: 0 10px 30px rgba(80, 50, 20, 0.08);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+    background:
+      radial-gradient(900px 420px at 10% -10%, #ffe7c2 0%, transparent 60%),
+      radial-gradient(700px 380px at 100% 0%, #ffd6cf 0%, transparent 55%),
+      var(--paper);
+    color: var(--ink);
+    line-height: 1.55;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 20px 16px 64px; }
+  header.hero {
+    background: linear-gradient(135deg, #fff 0%, #fff6ea 55%, #ffe9dc 100%);
+    border: 1px solid var(--line);
+    border-radius: 28px;
+    padding: 28px 22px 22px;
+    box-shadow: var(--shadow);
+  }
+  .brand {
+    display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+    color: var(--muted); font-size: 14px; letter-spacing: 0.04em;
+  }
+  .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+  h1 { font-size: clamp(32px, 6vw, 52px); line-height: 1.15; margin: 10px 0 8px; }
+  .sub { font-size: 18px; margin: 0 0 14px; }
+  .pills { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0 4px; }
+  .pill {
+    background: #fff; border: 1px solid var(--line); border-radius: 999px;
+    padding: 6px 12px; font-size: 14px;
+  }
+  .note {
+    margin-top: 16px; background: #fff; border-radius: 16px; padding: 12px 14px;
+    border: 1px dashed #e2c9a4; font-size: 15px;
+  }
+  h2 { font-size: 26px; margin: 32px 0 8px; }
+  .lead { color: var(--muted); margin-top: 0; }
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 14px; margin-top: 16px;
+  }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 20px;
+    padding: 14px; box-shadow: var(--shadow); text-decoration: none; display: block;
+    min-height: 148px;
+  }
+  .card:active { transform: scale(0.99); }
+  .swatch {
+    height: 72px; border-radius: 14px; display: flex; align-items: flex-end;
+    padding: 8px 10px; color: #fff; font-weight: 700; text-shadow: 0 1px 2px rgba(0,0,0,.25);
+  }
+  .meta { display: flex; justify-content: space-between; margin-top: 10px; font-size: 13px; color: var(--muted); }
+  .card h3 { margin: 8px 0 0; font-size: 18px; }
+  .ready { color: #1d7a46; font-weight: 700; }
+  .soon { color: #a07840; }
+  .unit {
+    margin-top: 22px; font-size: 15px; color: var(--muted); letter-spacing: 0.06em;
+  }
+  footer {
+    margin-top: 36px; color: var(--muted); font-size: 14px; text-align: center;
+  }
+  .bigbtn {
+    display: inline-block; background: var(--red); color: #fff; text-decoration: none;
+    border-radius: 14px; padding: 12px 16px; font-size: 18px; font-weight: 700; margin-top: 8px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="brand">
+      <span class="dot" style="background:#e24b3b"></span>
+      <span class="dot" style="background:#f2c14e"></span>
+      <span class="dot" style="background:#3d7edb"></span>
+      The Academy of Color Observation · 色彩观察学院 · 晨霞子
+    </div>
+    <h1>玩转色彩</h1>
+    <p class="sub">36个神奇的颜色实验</p>
+    <p>每天5分钟，动手发现颜色的秘密。扫码进入，不用注册，不用下载 App。</p>
+    <div class="pills">
+      <span class="pill">适合小学 2–4 年级</span>
+      <span class="pill">农村家庭图书馆</span>
+      <span class="pill">永久免费</span>
+      <span class="pill">可跳着学</span>
+    </div>
+    <div class="note">给帮忙的爷爷奶奶：点下面任意一课的大色块，就能打开这一课。先从第 01 课开始试一次。</div>
+    <a class="bigbtn" href="lesson-01.html">开始第 01 课 · 红色遇见黄色</a>
+  </header>
+
+  <h2>36 课目录</h2>
+  <p class="lead">孩子可以随便选一课。现在第 01 课可以打开，其余课程标题已排好，视频以后逐课放上。</p>
+
+  <div class="unit">第一单元 · 颜色会见面</div>
+  <div class="grid" id="grid"></div>
+
+  <footer>
+    色彩观察学院 · 儿童色彩实验室<br />
+    Color Observation Academy · Kids<br />
+    网站只负责找课。视频放在适合当地打开的地方，第一课先做测试。
+  </footer>
+</div>
+<script>
+const lessons = [
+  ["01","红色遇见黄色","linear-gradient(135deg,#e24b3b,#f2c14e)", true],
+  ["02","黄色遇见蓝色","linear-gradient(135deg,#f2c14e,#3d7edb)", false],
+  ["03","蓝色遇见红色","linear-gradient(135deg,#3d7edb,#e24b3b)", false],
+  ["04","谁能调出更多橙色","linear-gradient(135deg,#f08a2a,#e24b3b)", false],
+  ["05","绿色是怎么来的","linear-gradient(135deg,#3c9a6a,#f2c14e)", false],
+  ["06","紫色藏在哪里","linear-gradient(135deg,#7b5ea7,#e24b3b)", false],
+  ["07","棕色不是一种新颜色","linear-gradient(135deg,#8a5a32,#c9844a)", false],
+  ["08","黑色加进去会怎样","linear-gradient(135deg,#2a221c,#e24b3b)", false],
+  ["09","白色加进去会怎样","linear-gradient(135deg,#f7f1e8,#f2c14e)", false],
+  ["10","同样的红，为什么不一样","linear-gradient(135deg,#c4372c,#ff8a7a)", false],
+  ["11","谁比谁更亮","linear-gradient(135deg,#f6e7c1,#8a5a32)", false],
+  ["12","把颜色从亮排到暗","linear-gradient(135deg,#fff,#444)", false],
+  ["13","阳光下的白墙","linear-gradient(135deg,#fff6df,#d9c39a)", false],
+  ["14","影子是什么颜色","linear-gradient(135deg,#6d7c92,#c9d4e2)", false],
+  ["15","晚上的颜色变了吗","linear-gradient(135deg,#1d2a44,#f2c14e)", false],
+  ["16","鲜艳和发灰","linear-gradient(135deg,#e24b3b,#b7a196)", false],
+  ["17","加水之后颜色还在吗","linear-gradient(135deg,#7eb6e8,#f2c14e)", false],
+  ["18","远山为什么发蓝","linear-gradient(135deg,#8eb4d8,#d7e4c8)", false],
+  ["19","旧衣服的颜色","linear-gradient(135deg,#a89888,#e7d7c5)", false],
+  ["20","找出最鲜的那一块","linear-gradient(135deg,#ff4d4d,#ffd24d)", false],
+  ["21","冷色和暖色","linear-gradient(135deg,#3d7edb,#e24b3b)", false],
+  ["22","阳光色和阴影色","linear-gradient(135deg,#f2c14e,#6d7c92)", false],
+  ["23","同样的绿，冷还是暖","linear-gradient(135deg,#7dbe57,#2f6f62)", false],
+  ["24","给房间找一个暖色","linear-gradient(135deg,#f08a2a,#f6d7b0)", false],
+  ["25","给天空找一个冷色","linear-gradient(135deg,#9fd0ef,#3d7edb)", false],
+  ["26","颜色会骗人","linear-gradient(135deg,#e24b3b,#3c9a6a)", false],
+  ["27","背景一换，颜色就变","linear-gradient(135deg,#f2c14e,#2a221c)", false],
+  ["28","找出三种不一样的红","linear-gradient(135deg,#ff6b57,#9b1d2e)", false],
+  ["29","窗外出门看颜色","linear-gradient(135deg,#87b86a,#f2c14e)", false],
+  ["30","用三种颜色画一个苹果","linear-gradient(135deg,#e24b3b,#f2c14e,#3c9a6a)", false],
+  ["31","调一盘今天的天空","linear-gradient(135deg,#b9ddf5,#f6e7c1)", false],
+  ["32","调一盘今天的土地","linear-gradient(135deg,#c9844a,#6b4a2e)", false],
+  ["33","给家人画一张色卡","linear-gradient(135deg,#e24b3b,#f2c14e,#3d7edb)", false],
+  ["34","颜色小词典","linear-gradient(135deg,#7b5ea7,#f2c14e)", false],
+  ["35","我和颜色的一天","linear-gradient(135deg,#3c9a6a,#3d7edb)", false],
+  ["36","我的色彩小画展","linear-gradient(135deg,#e24b3b 0%,#f2c14e 40%,#3c9a6a 70%,#3d7edb 100%)", false]
+];
+const grid = document.getElementById("grid");
+lessons.forEach(([n, title, bg, ready]) => {
+  const a = document.createElement(ready ? "a" : "div");
+  a.className = "card";
+  if (ready) a.href = "lesson-01.html";
+  a.innerHTML = `
+    <div class="swatch" style="background:${bg}">${n}</div>
+    <h3>${title}</h3>
+    <div class="meta"><span>第 ${n} 课</span><span class="${ready ? "ready" : "soon"}">${ready ? "可以播放" : "即将开放"}</span></div>
+  `;
+  grid.appendChild(a);
+});
+</script>
+</body>
+</html>
