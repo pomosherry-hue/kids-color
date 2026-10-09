@@ -165,7 +165,7 @@ const grid = document.getElementById("grid");
 lessons.forEach(([n, title, bg, ready]) => {
   const a = document.createElement(ready ? "a" : "div");
   a.className = "card";
-  if (ready) a.href = "lesson-01.html";
+  if (ready) a.href = "lesson-01.mp4";
   a.innerHTML = `
     <div class="swatch" style="background:${bg}">${n}</div>
     <h3>${title}</h3>
