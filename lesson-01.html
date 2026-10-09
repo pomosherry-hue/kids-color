@@ -7,162 +7,93 @@
 <style>
   :root { --ink:#2a221c; --muted:#6d6258; --paper:#fff6ec; --line:#eadfce; }
   * { box-sizing: border-box; }
-  html, body { margin: 0; height: 100%; }
   body {
-    font-family: "PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif;
-    background: var(--paper); color: var(--ink);
+    margin: 0; font-family: "PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif;
+    background: var(--paper); color: var(--ink); line-height: 1.6;
   }
   .top {
     display: flex; justify-content: space-between; align-items: center;
-    padding: 12px 16px 0; font-size: 15px;
+    padding: 12px 16px; font-size: 15px; position: sticky; top: 0;
+    background: rgba(255,246,236,.94); backdrop-filter: blur(8px);
   }
   .top a { color: var(--muted); text-decoration: none; }
-  .progress { display: flex; gap: 6px; }
-  .progress i {
-    width: 28px; height: 8px; border-radius: 99px; background: #eadfce; display: block;
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 16px 40px; }
+  h1 { font-size: 32px; line-height: 1.2; margin: 8px 0 6px; }
+  .ask { font-size: 18px; margin: 0 0 14px; }
+  img.poster { width: 100%; border-radius: 18px; border: 1px solid var(--line); display: block; }
+  .step {
+    background: #fff; border: 1px solid var(--line); border-radius: 18px;
+    padding: 14px 16px; margin: 12px 0;
   }
-  .progress i.on { background: #e24b3b; }
-  .stage { max-width: 720px; margin: 0 auto; padding: 8px 16px 24px; }
-  .slide { display: none; }
-  .slide.on { display: block; }
-  .art {
-    height: 250px; border-radius: 24px; position: relative; overflow: hidden;
-    border: 1px solid var(--line); margin: 10px 0 14px;
+  .n {
+    display: inline-block; min-width: 28px; height: 28px; line-height: 28px;
+    text-align: center; border-radius: 50%; color: #fff; font-weight: 700; margin-right: 6px;
   }
-  h1 { font-size: 30px; line-height: 1.25; margin: 0 0 8px; }
-  .say {
-    font-size: 20px; line-height: 1.65; background: #fff; border: 1px solid var(--line);
-    border-radius: 18px; padding: 14px 16px;
-  }
-  .hint { color: var(--muted); font-size: 15px; margin: 10px 2px 0; }
-  .nav { display: flex; gap: 10px; margin-top: 16px; }
-  button, .ghost {
-    font: inherit; border: 0; border-radius: 14px; padding: 14px 16px; font-size: 18px; font-weight: 700;
-  }
-  .next { flex: 1; background: #e24b3b; color: #fff; }
-  .prev { background: #fff; border: 1px solid var(--line); color: var(--ink); }
-  .list { margin: 8px 0 0; padding-left: 22px; font-size: 18px; }
-  .list li { margin: 6px 0; }
+  h2 { font-size: 20px; margin: 0 0 8px; }
+  ul { margin: 8px 0 0; padding-left: 20px; }
+  .hint { color: var(--muted); font-size: 15px; }
   .brand { text-align: center; color: var(--muted); font-size: 13px; margin-top: 18px; }
-
-  /* scenes */
-  .s1 { background: linear-gradient(#fff7ea,#ffe7c8); }
-  .apple, .blob, .sun, .paper, .card {
-    position: absolute; border-radius: 50%;
-  }
-  .apple { width: 110px; height: 110px; background: radial-gradient(circle at 35% 35%, #ff8a78, #d62828); left: 18%; top: 70px; }
-  .apple:before { content:""; position:absolute; width:8px; height:22px; background:#3c6b3a; left:50px; top:-14px; border-radius:4px; }
-  .sun { width: 120px; height: 120px; background: radial-gradient(circle at 35% 35%, #ffe38a, #f0b429); right: 16%; top: 62px; }
-  .mid { position:absolute; left:50%; top:108px; transform:translateX(-50%); font-size:28px; }
-  .s2 { background: linear-gradient(#fff,#f7efe4); display:flex; }
-  .half { flex:1; display:flex; align-items:center; justify-content:center; font-size:22px; color:#fff; font-weight:700; }
-  .s3 { background:#fff8ef; }
-  .drop { position:absolute; border-radius:50%; }
-  .s4 { background: linear-gradient(#fffaf3,#f3e4cf); }
-  .bowl {
-    width: 150px; height: 70px; border: 8px solid #c9844a; border-top: 0; border-radius: 0 0 80px 80px;
-    position: absolute; left: 50%; bottom: 36px; transform: translateX(-50%); background: #fff;
-  }
-  .mix {
-    width: 92px; height: 92px; border-radius: 50%; position:absolute; left:50%; top:48px; transform:translateX(-50%);
-    background: radial-gradient(circle at 30% 30%, #ffd27a, #f08a2a 55%, #e24b3b);
-  }
-  .s5 { background: linear-gradient(90deg,#9b1d2e,#e24b3b,#f08a2a,#f2c14e); }
-  .s6 { background: linear-gradient(#e7f3ff,#fff6ea); }
-  .house { position:absolute; width:90px; height:70px; background:#fff; left:40px; bottom:40px; border-radius:8px; }
-  .house:before { content:""; position:absolute; left:-8px; top:-28px; border-left:53px solid transparent; border-right:53px solid transparent; border-bottom:30px solid #e24b3b; }
-  .orange { position:absolute; width:70px; height:70px; border-radius:50%; right:48px; bottom:58px; background:radial-gradient(circle at 35% 35%,#ffd27a,#f08a2a); }
 </style>
 </head>
 <body>
 <div class="top">
   <a href="index.html">← 36课</a>
-  <div class="progress" id="dots"></div>
-  <span id="count">1 / 6</span>
+  <span>第 01 课 · 约 5 分钟</span>
 </div>
-<div class="stage">
-  <section class="slide on">
-    <div class="art s1"><div class="apple"></div><div class="mid">+</div><div class="sun"></div></div>
-    <h1>红色遇见黄色</h1>
-    <div class="say">小朋友，你看：一边是红，一边是黄。它们如果碰在一起，会变成什么颜色？先猜一猜，先别告诉答案。</div>
-    <p class="hint">给老人：停一下，让孩子说出来。说错也没关系。</p>
-  </section>
+<div class="wrap">
+  <h1>红色遇见黄色</h1>
+  <p class="ask">同一种红色，加入一点黄色，会发生什么变化呢？</p>
+  <img class="poster" src="lesson-01-poster.jpg" alt="第01课海报：红色遇见黄色" />
 
-  <section class="slide">
-    <div class="art" style="display:flex;padding:0">
-      <div class="half" style="background:radial-gradient(circle at 35% 35%,#ff8a78,#d62828)">红</div>
-      <div class="half" style="background:radial-gradient(circle at 35% 35%,#ffe38a,#f0b429);color:#5a3b10">黄</div>
-    </div>
-    <h1>先分开看</h1>
-    <div class="say">先不要混。左边涂一块红，右边涂一块黄。看一看：哪一块更亮？哪一块更暖？它们真的是同一种“亮”吗？</div>
-    <p class="hint">没有颜料，就拿红纸和黄纸，或红苹果和香蕉，并排放着看。</p>
-  </section>
-
-  <section class="slide">
-    <div class="art s3">
-      <div class="drop" style="width:120px;height:120px;background:#d62828;left:40px;top:60px"></div>
-      <div class="drop" style="width:120px;height:120px;background:#f0b429;right:40px;top:60px"></div>
-      <div class="drop" style="width:70px;height:70px;background:#f08a2a;left:50%;top:88px;transform:translateX(-50%)"></div>
-    </div>
-    <h1>让它们见面</h1>
-    <div class="say">用干净的笔，在红和黄中间轻轻碰上。多碰几次。橙色出来了吗？有的橙更像红，有的橙更像黄。</div>
-    <p class="hint">水不要一次加太多。加一点，再看颜色变淡了没有。</p>
-  </section>
-
-  <section class="slide">
-    <div class="art s4"><div class="mix"></div><div class="bowl"></div></div>
-    <h1>小游戏：谁的橙更多</h1>
-    <div class="say">用同样的红和黄，试着调出三种不一样的橙。一种红多，一种黄多，一种差不多。</div>
-    <ol class="list">
-      <li>红多的橙</li>
-      <li>差不多的橙</li>
-      <li>黄多的橙</li>
-    </ol>
-    <p class="hint">把三块橙排成一排。孩子能指出“更红”和“更黄”就算完成。</p>
-  </section>
-
-  <section class="slide">
-    <div class="art s5"></div>
-    <h1>今天的秘密</h1>
-    <div class="say">红加黄会生出橙。可是橙也不只一种。颜色的名字可以一样，样子可以不一样。学画画的第一步，就是看见这些小差别。</div>
-  </section>
-
-  <section class="slide">
-    <div class="art s6"><div class="house"></div><div class="orange"></div></div>
-    <h1>带回家的小任务</h1>
-    <div class="say">在家里找一件偏橙的东西。它更像红，还是更像黄？画下来，或者拍一张照片。明天再发现另一个颜色的秘密。</div>
-    <p class="hint">可以是橘子、胡萝卜、外套、塑料盆、晚霞。找到一样就够了。</p>
-  </section>
-
-  <div class="nav">
-    <button class="prev" id="prev" type="button">上一张</button>
-    <button class="next" id="next" type="button">下一张</button>
+  <div class="step">
+    <h2><span class="n" style="background:#e24b3b">2</span>准备材料</h2>
+    <ul>
+      <li>红色颜料、黄色颜料</li>
+      <li>画笔、调色盘、白纸</li>
+      <li>水杯和抹布</li>
+    </ul>
+    <p class="hint">本课只用红和黄。蓝色、白色先放着。</p>
   </div>
-  <div class="brand">色彩观察学院 · 儿童色彩实验室 · 晨霞子<br>第01课 · 约5分钟 · 先看见，再调色</div>
+  <div class="step">
+    <h2><span class="n" style="background:#f08a2a">3</span>先看看纯红色</h2>
+    <p>先在纸上画出一个纯红色的色块。这是起点。仔细看，这个红色是什么样的？</p>
+  </div>
+  <div class="step">
+    <h2><span class="n" style="background:#f2c14e">4</span>加入一点黄色</h2>
+    <p>在红色中加入一点黄色，轻轻混合。加一点黄色后，红色变得更偏橙。</p>
+  </div>
+  <div class="step">
+    <h2><span class="n" style="background:#3c9a6a">5</span>再加一点黄色</h2>
+    <p>再加一点黄色，继续混合。这一次更橙，也更亮。</p>
+  </div>
+  <div class="step">
+    <h2><span class="n" style="background:#3d7edb">6</span>比较三个颜色</h2>
+    <p>把三块排在一起：纯红色、加一点黄、加更多黄。</p>
+    <ul>
+      <li>它们一样吗？</li>
+      <li>哪个更红？哪个更橙？</li>
+      <li>哪个更亮？</li>
+      <li>你最喜欢哪一个？为什么？</li>
+    </ul>
+  </div>
+  <div class="step">
+    <h2><span class="n" style="background:#e24b3b">7</span>动手试一试</h2>
+    <p>在纸上画出三个色块：① 纯红色 ② 红 + 一点黄 ③ 红 + 更多黄。可以多试几次。</p>
+  </div>
+  <div class="step">
+    <h2><span class="n" style="background:#7b5ea7">8</span>今天的发现</h2>
+    <ul>
+      <li>红色加入黄色后，会慢慢变成橙色。</li>
+      <li>加入的黄色越多，颜色越接近橙色，也越亮。</li>
+      <li>颜色不是固定不变的，只要加入一点其他颜色，它就会发生变化。</li>
+    </ul>
+  </div>
+  <div class="step">
+    <h2><span class="n" style="background:#e24b3b">9</span>小挑战</h2>
+    <p>在家里或学校找一找：有哪些红色的东西？它们的红色一样吗？有没有带一点橙色的红？</p>
+    <p class="hint">下次看到红色的东西，可以想一想：它是不是也带着一点黄色？明天用黄色和蓝色，调出另一种颜色。</p>
+  </div>
+  <p class="brand">每天5分钟 · 玩转色彩<br>色彩观察学院 · 儿童色彩实验室 · 晨霞子</p>
 </div>
-<script>
-const slides = [...document.querySelectorAll(".slide")];
-const dots = document.getElementById("dots");
-const count = document.getElementById("count");
-const prev = document.getElementById("prev");
-const next = document.getElementById("next");
-let i = 0;
-slides.forEach((_, n) => {
-  const dot = document.createElement("i");
-  if (n === 0) dot.className = "on";
-  dots.appendChild(dot);
-});
-function show(n) {
-  i = Math.max(0, Math.min(slides.length - 1, n));
-  slides.forEach((s, k) => s.classList.toggle("on", k === i));
-  [...dots.children].forEach((d, k) => d.classList.toggle("on", k === i));
-  count.textContent = (i + 1) + " / " + slides.length;
-  prev.style.visibility = i === 0 ? "hidden" : "visible";
-  next.textContent = i === slides.length - 1 ? "回到第一张" : "下一张";
-}
-prev.onclick = () => show(i - 1);
-next.onclick = () => show(i === slides.length - 1 ? 0 : i + 1);
-show(0);
-</script>
 </body>
 </html>
