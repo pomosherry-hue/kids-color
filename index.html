@@ -125,7 +125,7 @@
 <script>
 const lessons = [
   ["01","红色遇见黄色","linear-gradient(135deg,#e24b3b,#f2c14e)", true],
-  ["02","黄色遇见蓝色","linear-gradient(135deg,#f2c14e,#3d7edb)", false],
+  ["02","黄色遇见蓝色","linear-gradient(135deg,#f2c14e,#3d7edb)", true],
   ["03","蓝色遇见红色","linear-gradient(135deg,#3d7edb,#e24b3b)", false],
   ["04","谁能调出更多橙色","linear-gradient(135deg,#f08a2a,#e24b3b)", false],
   ["05","绿色是怎么来的","linear-gradient(135deg,#3c9a6a,#f2c14e)", false],
@@ -165,7 +165,7 @@ const grid = document.getElementById("grid");
 lessons.forEach(([n, title, bg, ready]) => {
   const a = document.createElement(ready ? "a" : "div");
   a.className = "card";
-  if (ready) a.href = "lesson-01.mp4";
+  if (ready) a.href = n === "01" ? "lesson-01.mp4" : "lesson-02.mp4";
   a.innerHTML = `
     <div class="swatch" style="background:${bg}">${n}</div>
     <h3>${title}</h3>
