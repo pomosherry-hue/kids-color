@@ -107,7 +107,7 @@
       <span class="pill">可跳着学</span>
     </div>
     <div class="note">给帮忙的爷爷奶奶：点下面任意一课的大色块，就能打开这一课。先从第 01 课开始试一次。</div>
-    <a class="bigbtn" href="lesson-01.mp4">开始第 01 课 · 红色遇见黄色</a>
+    <a class="bigbtn" href="https://github.com/pomosherry-hue/kids-color/releases/download/v0.1.0/lesson-01.mp4">开始第 01 课 · 红色遇见黄色</a>
   </header>
 
   <h2>36 课目录</h2>
@@ -165,7 +165,7 @@ const grid = document.getElementById("grid");
 lessons.forEach(([n, title, bg, ready]) => {
   const a = document.createElement(ready ? "a" : "div");
   a.className = "card";
-  if (ready) a.href = n === "01" ? "lesson-01.mp4" : "lesson-02.mp4";
+  if (ready) a.href = n === "01" ? "https://github.com/pomosherry-hue/kids-color/releases/download/v0.1.0/lesson-01.mp4" : "https://github.com/pomosherry-hue/kids-color/releases/download/v0.2.0/lesson-02.mp4";
   a.innerHTML = `
     <div class="swatch" style="background:${bg}">${n}</div>
     <h3>${title}</h3>
