@@ -163,10 +163,10 @@ const lessons = [
 ];
 const grid = document.getElementById("grid");
 lessons.forEach(([n, title, bg, ready]) => {
-  const open = ready === true || ready === "pending";
-  const a = document.createElement(open ? "a" : "div");
+  const isOpen = ready === true;
+  const a = document.createElement(isOpen ? "a" : "div");
   a.className = "card";
-  if (open) a.href = "lesson-" + n + ".html";
+  if (isOpen) a.href = "lesson-" + n + ".html";
   const label = ready === true ? "可以播放" : ready === "pending" ? "待确认" : "即将开放";
   const cls = ready === true ? "ready" : "soon";
   a.innerHTML = `
