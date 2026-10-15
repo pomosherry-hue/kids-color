@@ -163,7 +163,7 @@ const lessons = [
 ];
 const grid = document.getElementById("grid");
 lessons.forEach(([n, title, bg, ready]) => {
-  const isOpen = ready === true;
+  const isOpen = ready === true || ready === "pending";
   const a = document.createElement(isOpen ? "a" : "div");
   a.className = "card";
   if (isOpen) a.href = "lesson-" + n + ".html";
