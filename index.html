@@ -132,7 +132,7 @@ const lessons = [
   ["06","蓝色的世界","linear-gradient(135deg,#3d7edb,#7eb6e8)", true],
   ["07","棕色不是一种新颜色","linear-gradient(135deg,#8a5a32,#c9844a)", true],
   ["08","黑色加进去会怎样","linear-gradient(135deg,#2a221c,#e24b3b)", true],
-  ["09","白色加进去会怎样","linear-gradient(135deg,#f7f1e8,#f2c14e)", true],
+  ["09","白色加进去会怎样","linear-gradient(135deg,#f7f1e8,#f2c14e)", "pending"],
   ["10","同样的红，为什么不一样","linear-gradient(135deg,#c4372c,#ff8a7a)", "pending"],
   ["11","谁比谁更亮","linear-gradient(135deg,#f6e7c1,#8a5a32)", false],
   ["12","把颜色从亮排到暗","linear-gradient(135deg,#fff,#444)", false],
@@ -163,7 +163,7 @@ const lessons = [
 ];
 const grid = document.getElementById("grid");
 lessons.forEach(([n, title, bg, ready]) => {
-  const isOpen = ready === true || ready === "pending";
+  const isOpen = ready === true;
   const a = document.createElement(isOpen ? "a" : "div");
   a.className = "card";
   if (isOpen) a.href = "lesson-" + n + ".html";
