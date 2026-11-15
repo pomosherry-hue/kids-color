@@ -11,11 +11,23 @@
   .langs { display: flex; gap: 8px; }
   .langs button {
     background: #333; color: #fff; border: 1px solid #555; border-radius: 8px;
-    padding: 6px 12px; font-size: 14px; cursor: pointer;
+    padding: 6px 14px; font-size: 15px; cursor: pointer;
   }
-  .langs button.active { background: #f2c14e; color: #111; border-color: #f2c14e; }
+  .langs button.active { background: #f2c14e; color: #111; border-color: #f2c14e; font-weight: 700; }
   video { width: 100%; max-width: 480px; display: block; margin: 0 auto; background: #000; }
   .hint { text-align: center; font-size: 13px; color: #aaa; padding: 8px; }
+
+  /* Better looking subtitles */
+  video::cue {
+    background: rgba(0, 0, 0, 0.72);
+    color: #fff;
+    font-size: 18px;
+    font-family: "PingFang SC", "Noto Sans SC", sans-serif;
+    line-height: 1.4;
+    padding: 4px 8px;
+    border-radius: 6px;
+  }
+  video::cue(b) { font-weight: 700; }
 </style>
 </head>
 <body>
@@ -27,32 +39,48 @@
   </div>
 </div>
 <video id="v" controls playsinline preload="metadata" poster="lesson-32.jpg" crossorigin="anonymous">
-  <source src="lesson-32-dual.mp4" type="video/mp4">
-  <track kind="subtitles" src="lesson-32-zh.vtt" srclang="zh" label="中文" default>
-  <track kind="subtitles" src="lesson-32-en.vtt" srclang="en" label="English">
+  <source id="src" src="lesson-32.mp4" type="video/mp4">
+  <track id="track-zh" kind="subtitles" src="lesson-32-zh.vtt" srclang="zh" label="中文" default>
+  <track id="track-en" kind="subtitles" src="lesson-32-en.vtt" srclang="en" label="English">
 </video>
-<div class="hint">点击按钮切换中文 / English 音轨和字幕</div>
+<div class="hint">点击按钮切换语言（音轨 + 字幕）</div>
 <script>
+const video = document.getElementById('v');
+const src = document.getElementById('src');
+let currentLang = 'zh';
+let savedTime = 0;
+let wasPlaying = false;
+
 function setLang(lang) {
-  const v = document.getElementById('v');
-  const btnZh = document.getElementById('btn-zh');
-  const btnEn = document.getElementById('btn-en');
-  btnZh.classList.toggle('active', lang === 'zh');
-  btnEn.classList.toggle('active', lang === 'en');
+  if (lang === currentLang) return;
+  savedTime = video.currentTime || 0;
+  wasPlaying = !video.paused;
 
-  // Switch audio track (0 = Chinese, 1 = English)
-  if (v.audioTracks && v.audioTracks.length >= 2) {
-    v.audioTracks[0].enabled = (lang === 'zh');
-    v.audioTracks[1].enabled = (lang === 'en');
-  }
+  document.getElementById('btn-zh').classList.toggle('active', lang === 'zh');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
 
-  // Switch subtitle track
-  for (let i = 0; i < v.textTracks.length; i++) {
-    v.textTracks[i].mode = (v.textTracks[i].language === lang) ? 'showing' : 'hidden';
-  }
+  // Switch video source
+  src.src = (lang === 'en') ? 'lesson-32-en.mp4' : 'lesson-32.mp4';
+  video.load();
+
+  // Switch subtitle
+  document.getElementById('track-zh').mode = (lang === 'zh') ? 'showing' : 'hidden';
+  document.getElementById('track-en').mode = (lang === 'en') ? 'showing' : 'hidden';
+
+  currentLang = lang;
+
+  video.addEventListener('loadedmetadata', function resume() {
+    video.currentTime = Math.min(savedTime, video.duration - 0.5);
+    if (wasPlaying) video.play().catch(()=>{});
+    video.removeEventListener('loadedmetadata', resume);
+  });
 }
-// Default to Chinese
-document.addEventListener('DOMContentLoaded', () => setLang('zh'));
+
+// Default Chinese
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('track-zh').mode = 'showing';
+  document.getElementById('track-en').mode = 'hidden';
+});
 </script>
 </body>
 </html>
