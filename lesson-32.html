@@ -3,86 +3,16 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>第32课 · 调一盘今天的土地 · 中 / EN</title>
+<title>第32课 · 调一盘今天的土地</title>
 <style>
   body { margin: 0; background: #111; color: #fff8ef; font-family: "PingFang SC","Noto Sans SC",sans-serif; }
-  .top { padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; }
+  .top { padding: 12px 16px; }
   a { color: #f2c14e; text-decoration: none; font-size: 16px; }
-  .langs { display: flex; gap: 8px; }
-  .langs button {
-    background: #333; color: #fff; border: 1px solid #555; border-radius: 8px;
-    padding: 6px 14px; font-size: 15px; cursor: pointer;
-  }
-  .langs button.active { background: #f2c14e; color: #111; border-color: #f2c14e; font-weight: 700; }
   video { width: 100%; max-width: 480px; display: block; margin: 0 auto; background: #000; }
-  .hint { text-align: center; font-size: 13px; color: #aaa; padding: 8px; }
-
-  video::cue {
-    background: rgba(0, 0, 0, 0.75);
-    color: #fff;
-    font-size: 17px;
-    font-family: "PingFang SC", "Noto Sans SC", -apple-system, sans-serif;
-    line-height: 1.45;
-    padding: 6px 10px;
-    border-radius: 8px;
-  }
 </style>
 </head>
 <body>
-<div class="top">
-  <a href="index.html">← 返回</a>
-  <div class="langs">
-    <button id="btn-zh" class="active">中文</button>
-    <button id="btn-en">English</button>
-  </div>
-</div>
-<video id="v" controls playsinline preload="metadata" poster="lesson-32.jpg" crossorigin="anonymous">
-  <source id="src" src="lesson-32.mp4" type="video/mp4">
-  <track kind="subtitles" src="lesson-32-zh.vtt" srclang="zh" label="中文" default>
-  <track kind="subtitles" src="lesson-32-en.vtt" srclang="en" label="English">
-</video>
-<div class="hint">点击按钮切换语言（音轨 + 字幕）</div>
-<script>
-const video = document.getElementById('v');
-const src = document.getElementById('src');
-const btnZh = document.getElementById('btn-zh');
-const btnEn = document.getElementById('btn-en');
-let currentLang = 'zh';
-
-function applyTracks(lang) {
-  const tracks = video.textTracks;
-  for (let i = 0; i < tracks.length; i++) {
-    tracks[i].mode = (tracks[i].language === lang) ? 'showing' : 'hidden';
-  }
-}
-
-function setLang(lang) {
-  if (lang === currentLang) return;
-  const t = video.currentTime || 0;
-  const playing = !video.paused;
-
-  btnZh.classList.toggle('active', lang === 'zh');
-  btnEn.classList.toggle('active', lang === 'en');
-
-  src.src = (lang === 'en') ? 'lesson-32-en.mp4' : 'lesson-32.mp4';
-  video.load();
-  currentLang = lang;
-
-  const onReady = () => {
-    video.currentTime = Math.min(t, (video.duration || 999) - 0.3);
-    applyTracks(lang);
-    if (playing) video.play().catch(()=>{});
-    video.removeEventListener('loadeddata', onReady);
-  };
-  video.addEventListener('loadeddata', onReady);
-  // Fallback for iOS
-  setTimeout(() => applyTracks(lang), 400);
-}
-
-btnZh.addEventListener('click', () => setLang('zh'));
-btnEn.addEventListener('click', () => setLang('en'));
-
-video.addEventListener('loadedmetadata', () => applyTracks(currentLang));
-</script>
+<div class="top"><a href="index.html">← 返回</a></div>
+<video controls playsinline preload="metadata" poster="lesson-32.jpg" src="lesson-32.mp4"></video>
 </body>
 </html>
