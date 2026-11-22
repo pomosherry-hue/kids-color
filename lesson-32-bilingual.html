@@ -107,8 +107,12 @@ function setLang(lang) {
   const playing = !video.paused;
   btnZh.classList.toggle('active', lang === 'zh');
   btnEn.classList.toggle('active', lang === 'en');
-  src.src = (lang === 'en') ? 'lesson-32-en.mp4' : 'lesson-32.mp4';
+  var file = (lang === 'en') ? 'lesson-32-en.mp4' : 'lesson-32.mp4';
+  var url = (window.kidsCloudSrc && window.kidsCloudSrc(file)) || file;
+  src.src = url;
+  video.src = url;
   video.load();
+  if (window.kidsCloudAttach) window.kidsCloudAttach(video, file);
   currentLang = lang;
   const onReady = () => {
     video.currentTime = Math.min(t, (video.duration || 999) - 0.3);
@@ -124,5 +128,6 @@ video.addEventListener('timeupdate', updateSubs);
 video.addEventListener('seeked', updateSubs);
 init();
 </script>
+<script src="cloud-media.js"></script>
 </body>
 </html>

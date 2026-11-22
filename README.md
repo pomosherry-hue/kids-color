@@ -18,6 +18,8 @@
 ## 使用
 用浏览器打开上面的网址即可。本地预览：直接打开 `index.html`。
 
+视频和封面优先从腾讯云存储加载（`https://cloud1-d2guejnqud92f5860.storage.tcloudbase.com/series/wanzhuan-secai/...`）。打不开或大约 6 秒还没出来时，会自动改用本站上的 `lesson-NN.mp4` / `lesson-NN.jpg` 备份。这些备份文件都还留在仓库里。第 32 课的英文和双语音轨（`lesson-32-en.mp4`、`lesson-32-dual.mp4`）云上没有，仍用本站文件。
+
 ## 课程状态
 - 36 课的页面、视频、封面都已上传
 - 36 课全部开放
